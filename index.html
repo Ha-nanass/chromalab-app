@@ -87,7 +87,7 @@
             <filter id="filter-protanopia"><feColorMatrix type="matrix" values="0.56667 0.43333 0 0 0 0.55833 0.44167 0 0 0 0 0.24167 0.75833 0 0 0 0 0 1 0" /></filter>
             <filter id="filter-deuteranopia"><feColorMatrix type="matrix" values="0.62515 0.37485 0 0 0 0.70000 0.30000 0 0 0 0 0.30000 0.70000 0 0 0 0 0 1 0" /></filter>
             <filter id="filter-tritanopia"><feColorMatrix type="matrix" values="0.95000 0.05000 0 0 0 0.00000 0.43333 0.56667 0 0 0 0 0.00000 0.47500 0.52500 0 0 0 0 1 0" /></filter>
-            <filter id="filter-achromatopsia"><feColorMatrix type="matrix" values="0.29900 0.58700 0.11400 0 0 0.29900 0.58700 0.11400 0 0 0 0 0.29900 0.58700 0.11400 0 0 0 1 0" /></filter>
+            <filter id="filter-achromatopsia"><feColorMatrix type="matrix" values="0.29900 0.58700 0.11400 0 0 0.29900 0.58700 0.11400 0 0 0 0.29900 0.58700 0.11400 0 0 0 1 0" /></filter>
         </defs>
     </svg>
 
@@ -115,23 +115,27 @@
         </div>
     </header>
 
-    <!-- Barre de Palette du Projet & Score de Performance -->
-    <section class="bg-white border-b border-slate-200 py-3 z-30 shadow-xs" aria-label="Couleurs du projet">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <div class="flex items-center space-x-3">
-                <span class="text-xs font-mono font-semibold text-slate-500 uppercase tracking-wider">
-                    Couleurs du projet
-                </span>
-                <span id="badge-couleurs-count" class="text-xs font-mono font-bold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-lg border border-blue-200">5/5</span>
+    <!-- Barre de Palette du Projet & Score de Performance (Structure Multi-lignes fluide) -->
+    <section class="bg-white border-b border-slate-200 py-4 z-30 shadow-xs" aria-label="Couleurs du projet">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
+            <!-- Ligne 1 : Swatches de couleurs -->
+            <div class="flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center space-x-3">
+                    <span class="text-xs font-mono font-semibold text-slate-500 uppercase tracking-wider">
+                        Couleurs du projet
+                    </span>
+                    <span id="badge-couleurs-count" class="text-xs font-mono font-bold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-lg border border-blue-200">5/5</span>
+                </div>
+                <div id="project-palette-bar" class="flex flex-wrap items-center gap-2 flex-1 justify-start md:justify-end"></div>
             </div>
-            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full md:w-auto">
-                <div id="project-palette-bar" class="flex items-center space-x-2 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0"></div>
-                
-                <button type="button" onclick="EVENTS.applyPaletteToSystem()" class="bg-blue-600 hover:bg-blue-500 text-white rounded-xl px-3.5 py-1.5 flex items-center gap-2 cursor-pointer transition shadow-xs">
-                    <span class="text-xs font-mono font-bold">✨ Enregistrer & Appliquer à l'App</span>
+
+            <!-- Ligne 2 : Actions et Score de performance -->
+            <div class="flex flex-wrap items-center justify-between pt-2 border-t border-slate-100 gap-3">
+                <button type="button" onclick="EVENTS.applyPaletteToSystem()" class="bg-blue-600 hover:bg-blue-500 text-white rounded-xl px-4 py-2 flex items-center gap-2 cursor-pointer transition shadow-xs text-xs font-mono font-bold">
+                    <span>✨ Enregistrer & Appliquer à l'App</span>
                 </button>
 
-                <button type="button" onclick="UI.switchWorkspace('compare')" class="bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl px-3 py-1.5 flex items-center gap-2 cursor-pointer transition">
+                <button type="button" onclick="UI.switchWorkspace('compare')" class="bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl px-3.5 py-1.5 flex items-center gap-2 cursor-pointer transition">
                     <span class="text-[10px] font-mono font-semibold text-emerald-800 uppercase">Indice Performance :</span>
                     <span id="header-health-score-badge" class="text-xs font-mono font-bold text-emerald-700 bg-white px-2 py-0.5 rounded-md border border-emerald-300">92/100</span>
                 </button>
@@ -162,12 +166,8 @@
 
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8" role="main">
 
-        <!-- =================================================================== -->
-        <!-- ESPACE 1 : STUDIO & SÉMANTIQUE                                      -->
-        <!-- =================================================================== -->
+        <!-- ESPACE 1 : STUDIO & SÉMANTIQUE -->
         <section id="ws-studio" class="tab-panel space-y-8" role="tabpanel" aria-labelledby="nav-ws-studio">
-            
-            <!-- Guide pédagogique -->
             <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl text-xs text-blue-900 space-y-1">
                 <span class="font-mono font-bold block">💡 Mode d'emploi — Studio & Sémantique :</span>
                 <p>Cet espace vous permet d'analyser une couleur sous tous ses angles (numérique, perceptive, sémantique). Choisissez vos couleurs, ajoutez-les à votre palette projet puis cliquez sur « Enregistrer & Appliquer » pour voir les modèles et prévisualisations s'actualiser avec vos teintes.</p>
@@ -277,7 +277,7 @@
                         </div>
 
                         <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl text-[11px] text-amber-900 space-y-1">
-                            <span class="font-mono font-bold block">🖨️️ Avertissement Profil Print :</span>
+                            <span class="font-mono font-bold block">🖨 Avertissement Profil Print :</span>
                             <p class="leading-relaxed text-[10px]">La conversion CMJN est indicative (Profil ISO Coated v2 / FOGRA39). Vérifiez l'épreuve papier avant impression offset.</p>
                         </div>
 
@@ -426,12 +426,8 @@
             </div>
         </section>
 
-        <!-- =================================================================== -->
-        <!-- ESPACE 2 : COMPARER & ACCESSIBILITÉ                                 -->
-        <!-- =================================================================== -->
+        <!-- ESPACE 2 : COMPARER & ACCESSIBILITÉ -->
         <section id="ws-compare" class="tab-panel hidden space-y-8" role="tabpanel" aria-labelledby="nav-ws-compare">
-            
-            <!-- Guide pédagogique -->
             <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl text-xs text-blue-900 space-y-1">
                 <span class="font-mono font-bold block">💡 Mode d'emploi — Comparer & Accessibilité :</span>
                 <p>Évaluez la robustesse de votre palette projet (jusqu'à 5 tokens). L'indice de performance calcule automatiquement la conformité WCAG, la dynamique de luminance ($\Delta L$), et simule le comportement des couleurs sous différentes formes de daltonisme.</p>
@@ -454,7 +450,6 @@
                     </div>
                 </div>
 
-                <!-- Grille des 4 critères évalués -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
                     <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
                         <div class="flex items-center justify-between">
@@ -501,7 +496,6 @@
                     </div>
                 </div>
 
-                <!-- Rapport d'audit détaillé et explications -->
                 <details class="bg-slate-50 rounded-2xl border border-slate-200 p-5 text-xs space-y-3">
                     <summary class="font-mono font-bold text-slate-900 cursor-pointer flex items-center justify-between">
                         <span>🔍 Méthodologie du calcul & Diagnostic détaillé du score</span>
@@ -582,7 +576,6 @@
                         </div>
                     </div>
 
-                    <!-- Matrice d'Audit Croisée avec Légende -->
                     <div class="space-y-4 pt-4 border-t border-slate-100">
                         <div class="flex items-center justify-between">
                             <h4 class="text-xs font-mono font-semibold uppercase tracking-wider text-slate-500">Matrice d'Audit Croisée de la Palette</h4>
@@ -610,7 +603,6 @@
                         </div>
                     </div>
 
-                    <!-- Simulateur de Vision (CVD) -->
                     <div class="space-y-4 pt-4 border-t border-slate-100">
                         <div class="space-y-1">
                             <h4 class="text-xs font-mono font-semibold uppercase tracking-wider text-slate-500">Simulations de Vision (Déficiences Chromatiques)</h4>
@@ -640,12 +632,8 @@
             </div>
         </section>
 
-        <!-- =================================================================== -->
-        <!-- ESPACE 3 : PRÉVISUALISER UI                                         -->
-        <!-- =================================================================== -->
+        <!-- ESPACE 3 : PRÉVISUALISER UI -->
         <section id="ws-preview" class="tab-panel hidden space-y-8" role="tabpanel" aria-labelledby="nav-ws-preview">
-            
-            <!-- Guide pédagogique -->
             <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl text-xs text-blue-900 space-y-1">
                 <span class="font-mono font-bold block">💡 Mode d'emploi — Prévisualiser UI :</span>
                 <p>Testez l'application de votre palette enregistrée sur 7 supports haute fidélité (site web, appli mobile SaaS, e-commerce, dashboard DataViz, carte de visite recto/verso, etc.). Basculez entre le mode clair/sombre et activez les filtres d'accessibilité visuelle en temps réel.</p>
@@ -672,7 +660,6 @@
                             </select>
                         </div>
 
-                        <!-- Theme Toggle for Mockup -->
                         <div class="flex items-center space-x-2">
                             <label for="select-preview-theme" class="text-xs font-mono font-semibold text-slate-600">Thème :</label>
                             <select id="select-preview-theme" onchange="EVENTS.togglePreviewTheme(this.value)" class="bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono font-semibold px-3 py-2 text-slate-900 outline-none cursor-pointer focus:border-blue-600 transition">
@@ -681,7 +668,6 @@
                             </select>
                         </div>
 
-                        <!-- Toggle Token Inspector Badges -->
                         <button type="button" id="btn-toggle-badges" onclick="EVENTS.toggleTokenBadges()" class="bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-xs font-mono font-semibold px-3 py-2 rounded-xl transition cursor-pointer flex items-center gap-1.5">
                             <span id="badge-toggle-icon">🏷️</span> <span id="badge-toggle-text">Masquer Tokens</span>
                         </button>
@@ -696,21 +682,14 @@
                     </div>
                 </div>
 
-                <!-- Live Mockup Viewport Canvas -->
                 <div class="flex justify-center bg-slate-100/80 p-4 sm:p-8 rounded-2xl border border-slate-200 overflow-x-auto min-h-[550px] items-center">
-                    <div id="ui-mockup-canvas" class="transition-all duration-300 relative overflow-hidden shadow-soft w-full">
-                        <!-- Contenu prévisualisé injecté dynamiquement par JS -->
-                    </div>
+                    <div id="ui-mockup-canvas" class="transition-all duration-300 relative overflow-hidden shadow-soft w-full"></div>
                 </div>
             </div>
-
         </section>
 
-        <!-- =================================================================== -->
-        <!-- ESPACE 4 : EXEMPLES & ŒUVRES                                        -->
-        <!-- =================================================================== -->
+        <!-- ESPACE 4 : EXEMPLES & ŒUVRES -->
         <section id="ws-gallery" class="tab-panel hidden space-y-8" role="tabpanel" aria-labelledby="nav-ws-gallery">
-            
             <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl text-xs text-blue-900 space-y-1">
                 <span class="font-mono font-bold block">💡 Mode d'emploi — Exemples & Œuvres :</span>
                 <p>Découvrez comment les maîtres de l'art, de l'affiche publicitaire et du design ont exploité la sémantique des couleurs. La première section s'accorde à votre teinte active, tandis que la seconde propose des pistes émotionnelles croisées.</p>
@@ -745,14 +724,10 @@
 
                 <div id="gallery-alternative-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
             </div>
-
         </section>
 
-        <!-- =================================================================== -->
-        <!-- ESPACE 5 : CARNET & MÉTHODE                                         -->
-        <!-- =================================================================== -->
+        <!-- ESPACE 5 : CARNET & MÉTHODE -->
         <section id="ws-notebook" class="tab-panel hidden space-y-8" role="tabpanel" aria-labelledby="nav-ws-notebook">
-            
             <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl text-xs text-blue-900 space-y-1">
                 <span class="font-mono font-bold block">💡 Mode d'emploi — Carnet & Recherche :</span>
                 <p>Consignez vos hypothèses de design et décisions argumentées pour documenter votre démarche (Design Rationale). Vos notes sont sauvegardées localement et exportables en JSON ou CSV.</p>
@@ -1335,8 +1310,8 @@
                     const lum = CONTRAST.getLuminance(color.r, color.g, color.b);
                     const textColor = lum > 0.4 ? '#0F172A' : '#FFFFFF';
                     html += `
-                        <div onclick="EVENTS.selectActiveFromProject(${idx})" class="flex items-center space-x-2.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl p-1.5 pr-3 cursor-pointer transition shadow-xs group" role="button" tabindex="0" aria-label="Sélectionner ${color.name}">
-                            <span class="w-6 h-6 rounded-lg border border-slate-300 flex items-center justify-center text-[10px] font-mono font-bold shadow-inner" style="background-color:${color.hex}; color:${textColor}" aria-hidden="true">
+                        <div onclick="EVENTS.selectActiveFromProject(${idx})" class="flex items-center space-x-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl p-1.5 pr-2.5 cursor-pointer transition shadow-xs group" role="button" tabindex="0" aria-label="Sélectionner ${color.name}">
+                            <span class="w-5 h-5 rounded-lg border border-slate-300 flex items-center justify-center text-[10px] font-mono font-bold shadow-inner" style="background-color:${color.hex}; color:${textColor}" aria-hidden="true">
                                 ${idx + 1}
                             </span>
                             <div class="leading-tight">
@@ -1350,7 +1325,7 @@
 
                 if (STATE.projectColors.length < 5) {
                     html += `
-                        <button type="button" onclick="EVENTS.addActiveToProjectPalette()" class="px-3.5 py-1.5 rounded-xl border border-dashed border-slate-300 hover:border-blue-600 text-slate-500 hover:text-slate-900 text-xs font-mono font-semibold transition flex items-center gap-1 cursor-pointer bg-slate-50" aria-label="Ajouter à la palette">
+                        <button type="button" onclick="EVENTS.addActiveToProjectPalette()" class="px-3 py-1.5 rounded-xl border border-dashed border-slate-300 hover:border-blue-600 text-slate-500 hover:text-slate-900 text-xs font-mono font-semibold transition flex items-center gap-1 cursor-pointer bg-slate-50" aria-label="Ajouter à la palette">
                             <span>+ Ajouter</span>
                         </button>
                     `;
@@ -1656,7 +1631,6 @@
 
                 const active = STATE.projectColors;
                 
-                // Fallback auto-role assignments if not manually defined
                 const getRoleHex = (roleKey, fallbackHex) => {
                     const idx = STATE.paletteRoles[roleKey];
                     if (idx !== null && idx !== undefined && active[idx]) {
@@ -2574,7 +2548,7 @@
                 const statement = statementEl ? statementEl.value.trim() : '';
 
                 if (!title || !statement) {
-                    UI.showToast("⚠️️ Veuillez remplir le titre et l'hypothèse.");
+                    UI.showToast("⚠ Veuillez remplir le titre et l'hypothèse.");
                     return;
                 }
 
